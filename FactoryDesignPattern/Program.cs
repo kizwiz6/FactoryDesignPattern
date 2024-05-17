@@ -6,29 +6,13 @@ namespace FactoryDesignPattern
     {
         static void Main(string[] args)
         {
-            // hardcording the card type
-            string cardType = "Monzo";
-
-            ICreditCard cardDetails = null;
-
-            if (cardType == "MoneyBack")
-            {
-                cardDetails = new MoneyBack();
-            }
-            else if (cardType == "Monzo")
-            {
-                cardDetails = new Monzo();
-            }
-            else if (cardType == "Platinum")
-            {
-                cardDetails = new Platinum();
-            }
+            ICreditCard cardDetails = CreditCardFactory.GetCreditCard("Monzo");
 
             if (cardDetails != null)
             {
-                Console.WriteLine("CardType: " + cardDetails.GetCardType());
-                Console.WriteLine("CreditLimit: " + cardDetails.GetCreditLimit());
-                Console.WriteLine("ANnualCharge: " + cardDetails.GetAnnualCharge());
+                Console.WriteLine("Card Type : " + cardDetails.GetCardType());
+                Console.WriteLine("Credit Limit : " + cardDetails.GetCreditLimit());
+                Console.WriteLine("Annual Charge : " + cardDetails.GetAnnualCharge());
             }
             else
             {
